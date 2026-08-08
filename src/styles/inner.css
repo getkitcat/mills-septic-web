@@ -25,7 +25,7 @@
 .cfp{color:var(--accent);font:800 26px 'Barlow Condensed',sans-serif;text-decoration:none;display:block;margin-top:2px}
 .loader{position:fixed;inset:0;background:#fff;z-index:300;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;transition:opacity .55s ease}
 .lwm{font:800 76px/1 'Barlow Condensed',sans-serif;text-transform:uppercase;letter-spacing:.03em;color:#111;animation:lpop .7s ease both;margin:0}
-.lwr{color:#D42B1F}
+.lwr{color:var(--accent)}
 .lsub{font:600 15px 'Barlow Condensed',sans-serif;text-transform:uppercase;letter-spacing:.24em;color:#93A2B5}
 .triosec{padding:0 0 100px}
 .phero{position:relative;overflow:hidden}
