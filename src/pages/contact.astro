@@ -1,0 +1,99 @@
+---
+// Contact — Mills Septic Tank Service (Ocala, FL). Spec draft.
+// Form uses Web3Forms; drop the client's real access key into WEB3FORMS_KEY
+// on launch (same provider as the other KitCat lead forms).
+import Base from '../layouts/Base.astro';
+import site from '../data/site.json';
+import '../styles/inner.css';
+import '../styles/home.css';
+
+const tel = `tel:${site.phoneRaw}`;
+const WEB3FORMS_KEY = 'YOUR_WEB3FORMS_ACCESS_KEY'; // TODO: replace on launch
+const services = ['Septic tank pumping', 'Cleaning & maintenance', 'Septic inspection', 'Drainfield repair', 'Septic repair', 'New system installation', 'Grease trap pumping', 'Emergency service', 'Something else'];
+---
+<Base
+  title="Contact Mills Septic Tank Service | Ocala, FL — Call (352) 732-3956"
+  description="Get in touch with Mills Septic Tank Service in Ocala, FL. Call (352) 732-3956 for 24/7 emergency septic service and free estimates across Marion County, or send us a message and we'll get right back to you."
+  path="/contact/"
+  loader={{ variant: 'text', title: 'Contact', accent: 'Us', sub: site.countiesShort }}
+>
+  <section class="phero">
+    <div class="wrap">
+      <div class="crumb"><a href="/">Home</a> / <span style="color:#fff">Contact</span></div>
+      <h1 class="h1">Talk to a real person,<br />any hour.</h1>
+      <p class="lead">Call for 24/7 emergency service or a free estimate — nights, weekends, and holidays included. Prefer to type it out? Send a message and we'll get right back to you.</p>
+      <div class="fx ac gap16" style="margin-top:28px;flex-wrap:wrap">
+        <a class="btn" href={tel} style="font-size:20px;padding:18px 32px">Call {site.phone}</a>
+      </div>
+    </div>
+    <span class="wm">Contact</span>
+  </section>
+
+  <section class="sec">
+    <div class="wrap g2" style="align-items:start;gap:56px">
+      <div>
+        <div class="eb" style="color:var(--accent)">Get in touch</div>
+        <h2 class="h2">Request service or a free estimate</h2>
+        <p class="bodyp">Tell us what's going on with your system and where you are in Marion County. For anything urgent — a backup, an overflow, sewage in the yard — please call so we can get to you fast.</p>
+        <div class="g2" style="gap:18px;margin-top:32px;align-items:stretch">
+          <div class="cf"><h3 class="cft">Call us</h3><a class="cfp" href={tel}>{site.phone}</a><p class="cfv" style="margin-top:8px">24/7 emergency line</p></div>
+          <div class="cf"><h3 class="cft">Hours</h3><p class="cfv">24 hours a day<br />7 days a week</p></div>
+          <div class="cf"><h3 class="cft">Area</h3><p class="cfv">Ocala &amp; all of<br />Marion County, FL</p></div>
+          <div class="cf"><h3 class="cft">Estimates</h3><p class="cfv">Free &amp; on-site<br />No obligation</p></div>
+        </div>
+        <div class="ph2" style="height:300px;margin-top:24px"><span class="phl2">map — Ocala &amp; Marion County service area (Google Map embed)</span></div>
+      </div>
+
+      <div class="formcard">
+        <h3 class="cft" style="font-size:22px;margin-bottom:6px">Send us a message</h3>
+        <p style="color:#5A6A80;font-size:14.5px;margin:0 0 22px">We usually reply the same day. For emergencies, please call.</p>
+        <form action="https://api.web3forms.com/submit" method="POST">
+          <input type="hidden" name="access_key" value={WEB3FORMS_KEY} />
+          <input type="hidden" name="subject" value="New lead — Mills Septic website" />
+          <input type="hidden" name="from_name" value="Mills Septic website" />
+          <input type="checkbox" name="botcheck" class="hp" tabindex="-1" autocomplete="off" />
+          <div class="fgrid">
+            <label class="fl">Name<input class="fi" type="text" name="name" required placeholder="Your name" /></label>
+            <label class="fl">Phone<input class="fi" type="tel" name="phone" required placeholder="(352) 000-0000" /></label>
+          </div>
+          <div class="fgrid">
+            <label class="fl">Email<input class="fi" type="email" name="email" placeholder="you@email.com" /></label>
+            <label class="fl">City / area<input class="fi" type="text" name="city" placeholder="e.g. Ocala, Belleview" /></label>
+          </div>
+          <label class="fl">What do you need?
+            <select class="fi" name="service">
+              {services.map((s) => <option value={s}>{s}</option>)}
+            </select>
+          </label>
+          <label class="fl">Tell us what's happening
+            <textarea class="fi" name="message" rows="4" placeholder="Describe the problem, the property, and anything we should know."></textarea>
+          </label>
+          <button class="btn w100" type="submit" style="justify-content:center;margin-top:6px;font-size:18px;padding:16px">Send message</button>
+          <p style="color:#8A7F68;font-size:12.5px;margin:14px 0 0;text-align:center">Prefer to talk? Call <a href={tel} style="color:var(--accent);font-weight:700;text-decoration:none">{site.phone}</a></p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta" style="padding:80px 0">
+    <div class="wrap">
+      <div class="eb">24/7 emergency</div>
+      <h2 class="ctap">Septic emergency? Call now.</h2>
+      <div style="margin-top:30px">
+        <a class="btn" href={tel} style="font-size:24px;padding:20px 40px">Call {site.phone}</a>
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .formcard{background:#fff;border:1px solid #E9E3D6;border-radius:16px;padding:34px 30px;box-shadow:0 30px 60px -34px rgba(14,27,43,.4);position:sticky;top:150px}
+  .fgrid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  .fl{display:flex;flex-direction:column;gap:7px;font:700 13px/1 'Barlow Condensed',sans-serif;text-transform:uppercase;letter-spacing:.08em;color:#31435C;margin-bottom:14px}
+  .fi{font-family:'Barlow',sans-serif;font-size:15px;color:#233247;background:#F7F5F0;border:1.5px solid #E4DDCE;border-radius:9px;padding:12px 13px;width:100%;transition:border-color .2s ease,box-shadow .2s ease}
+  .fi:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px rgba(242,106,27,.15);background:#fff}
+  textarea.fi{resize:vertical;min-height:96px}
+  select.fi{appearance:none;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%23F26A1B' stroke-width='3'><path d='M6 9l6 6 6-6'/></svg>");background-repeat:no-repeat;background-position:right 14px center;padding-right:36px}
+  .hp{display:none}
+  @media (max-width:640px){.formcard{position:static;padding:26px 20px}.fgrid{grid-template-columns:1fr}}
+</style>

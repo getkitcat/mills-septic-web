@@ -1,0 +1,236 @@
+﻿backend:
+  name: github
+  repo: getkitcat/septic-template
+  branch: main
+  base_url: https://sveltia-cms-auth.getkitcat.workers.dev  # KitCat's Sveltia auth worker (must have repo access)
+
+# Where uploaded images are stored (repo path) vs. served from (site URL)
+media_folder: "public/assets"
+public_folder: "/assets"
+
+collections:
+  - name: services
+    label: "Service pages"
+    label_singular: "Service"
+    description: "One entry per service page. The article is a stack of blocks â€” text sections, checklists, review quotes."
+    folder: "src/content/services"
+    extension: yml
+    format: yml
+    create: true
+    slug: "{{slug}}"
+    identifier_field: title
+    summary: "{{title}}"
+    fields:
+      - { name: title, label: "Page title (H1)", widget: string }
+      - { name: description, label: "Meta description", widget: text, hint: "Shows in Google results. ~155 characters, end with the phone number." }
+      - name: category
+        label: "Breadcrumb category"
+        widget: object
+        fields:
+          - { name: label, label: "Label", widget: string, hint: "e.g. Septic Services" }
+          - { name: href, label: "Link", widget: string, hint: "e.g. /septic-pumping/" }
+      - name: loader
+        label: "Loading screen title"
+        widget: object
+        fields:
+          - { name: title, label: "First words (dark)", widget: string }
+          - { name: accent, label: "Last word (red)", widget: string }
+      - { name: lead, label: "Hero intro paragraph", widget: text }
+      - { name: heroNote, label: "Hero star-row note", widget: string, required: false, hint: "Leave blank for 'Trusted by Central Florida homeowners since 1984'." }
+      - name: heroImage
+        label: "Article top image"
+        widget: object
+        required: false
+        fields:
+          - { name: src, label: "Image", widget: image }
+          - { name: alt, label: "Alt text", widget: string }
+      - { name: heroPlaceholder, label: "Placeholder label (if no image yet)", widget: string, required: false }
+      - name: article
+        label: "Article blocks"
+        widget: list
+        types:
+          - name: section
+            label: "Text section"
+            fields:
+              - { name: eyebrow, label: "Eyebrow", widget: string }
+              - { name: heading, label: "Heading", widget: string }
+              - { name: paragraphs, label: "Paragraphs", widget: list, field: { name: p, label: "Paragraph", widget: text } }
+          - name: checklist
+            label: "Checklist"
+            fields:
+              - { name: eyebrow, label: "Eyebrow", widget: string }
+              - { name: heading, label: "Heading", widget: string }
+              - { name: items, label: "Items", widget: list, field: { name: item, label: "Item", widget: string } }
+          - name: review
+            label: "Review quote"
+            fields:
+              - { name: quote, label: "Quote (with quotation marks)", widget: text }
+              - { name: name, label: "Name line", widget: string, hint: "e.g. â€” Client D., Lakeland" }
+          - name: placeholder
+            label: "Photo placeholder"
+            fields:
+              - { name: label, label: "Label", widget: string }
+              - { name: height, label: "Height (px)", widget: number, default: 300 }
+      - name: related
+        label: "Sidebar: related services"
+        widget: object
+        fields:
+          - { name: title, label: "Card title", widget: string, default: "Related services" }
+          - name: links
+            label: "Links"
+            widget: list
+            fields:
+              - { name: label, label: "Label", widget: string }
+              - { name: href, label: "Link", widget: string }
+          - name: all
+            label: "'All services' link"
+            widget: object
+            required: false
+            fields:
+              - { name: label, label: "Label", widget: string }
+              - { name: href, label: "Link", widget: string }
+      - name: process
+        label: "Process section"
+        widget: object
+        fields:
+          - { name: heading, label: "Heading", widget: string }
+          - name: steps
+            label: "Steps"
+            widget: list
+            fields:
+              - { name: title, label: "Title", widget: string }
+              - { name: text, label: "Text", widget: text }
+      - name: trio
+        label: "Bottom line (3 cards)"
+        widget: object
+        fields:
+          - { name: heading, label: "Heading", widget: string, default: "Why this service pays for itself" }
+          - name: cards
+            label: "Cards (exactly 3: navy / red / orange)"
+            widget: list
+            min: 3
+            max: 3
+            fields:
+              - { name: tag, label: "Tag", widget: string }
+              - { name: title, label: "Title", widget: string }
+              - { name: text, label: "Text", widget: text }
+      - name: faq
+        label: "FAQ"
+        widget: object
+        fields:
+          - { name: heading, label: "Heading", widget: string, default: "Common questions" }
+          - name: items
+            label: "Questions"
+            widget: list
+            fields:
+              - { name: q, label: "Question", widget: string }
+              - { name: a, label: "Answer", widget: text }
+
+  - name: blog
+    label: "Blog posts"
+    label_singular: "Post"
+    description: "Cards on /blog. A post with a 'Link override' points its card at that URL (e.g. a service page); leave it blank and write a body to publish a real article at /blog/<slug>."
+    folder: "src/content/blog"
+    create: true
+    slug: "{{slug}}"
+    identifier_field: title
+    summary: "{{title}}  â€”  {{fields.tag}} Â· {{fields.dateLabel}}"
+    sortable_fields: [date, title, tag]
+    fields:
+      - { name: title, label: "Title", widget: string }
+      - { name: description, label: "Teaser / meta description", widget: text }
+      - { name: tag, label: "Tag shown on the card", widget: string, hint: "e.g. Drain Field, Terralift, Tips" }
+      - name: filters
+        label: "Filter categories"
+        widget: select
+        multiple: true
+        options:
+          - { label: "Homeowner Guide", value: homeowner }
+          - { label: "Septic", value: septic }
+          - { label: "Repairs", value: repairs }
+      - { name: date, label: "Date (for sorting)", widget: datetime, format: "YYYY-MM-DD", date_format: "YYYY-MM-DD", time_format: false, picker_utc: true }
+      - { name: dateLabel, label: "Date shown on the card", widget: string, hint: "e.g. June 2026" }
+      - { name: readTime, label: "Read time", widget: string, hint: "e.g. 4 min read" }
+      - { name: cover, label: "Card image", widget: image, required: false }
+      - { name: imagePlaceholder, label: "Placeholder label (if no image yet)", widget: string, required: false }
+      - { name: link, label: "Link override", widget: string, required: false, hint: "Optional. Send the card to this URL instead of a blog article, e.g. /septic-pumping/" }
+      - { name: featured, label: "Featured (big card up top)", widget: boolean, default: false }
+      - { name: draft, label: "Draft (hide from the live site)", widget: boolean, default: false }
+      - { name: body, label: "Body (only used without a link override)", widget: markdown, required: false }
+
+  - name: site
+    label: "Site settings"
+    files:
+      - name: business
+        label: "Business info (phone, address, top bar)"
+        file: "src/data/site.json"
+        description: "Company-wide details used across the whole site: header, footer, contact cards, schema."
+        fields:
+          - { name: name, label: "Business name", widget: string }
+          - { name: legalName, label: "Legal name (footer Â©)", widget: string }
+          - { name: taglineTop, label: "Tagline line 1", widget: string }
+          - { name: taglineAccent, label: "Tagline line 2 (orange)", widget: string }
+          - { name: phone, label: "Phone (display)", widget: string }
+          - { name: phoneRaw, label: "Phone (digits only, for tel: links)", widget: string }
+          - { name: phone2, label: "Second phone (display)", widget: string }
+          - { name: phone2Raw, label: "Second phone (digits only)", widget: string }
+          - { name: since, label: "Founded year", widget: string }
+          - name: address
+            label: "Address"
+            widget: object
+            fields:
+              - { name: street, label: "Street", widget: string }
+              - { name: city, label: "City", widget: string }
+              - { name: state, label: "State", widget: string }
+              - { name: zip, label: "ZIP", widget: string }
+          - { name: countiesShort, label: "Counties (footer card)", widget: string }
+          - name: topbar
+            label: "Top bar"
+            widget: object
+            fields:
+              - { name: bold, label: "Bold lead-in", widget: string }
+              - { name: items, label: "Other items", widget: list, field: { name: item, label: "Item", widget: string } }
+          - { name: credentials, label: "Footer credentials paragraph", widget: text }
+          - { name: footerBar, label: "Footer bottom-right line", widget: string }
+          - { name: logo, label: "Logo", widget: image }
+          - { name: logoAlt, label: "Logo alt text", widget: string }
+          - name: social
+            label: "Social links"
+            widget: list
+            fields:
+              - { name: cls, label: "Style class", widget: select, options: [soc-fb, soc-li, soc-g] }
+              - { name: label, label: "Letter shown", widget: string }
+              - { name: title, label: "Tooltip", widget: string }
+              - { name: href, label: "URL", widget: string }
+          - name: sidebar
+            label: "Service-page sidebar"
+            widget: object
+            fields:
+              - name: call
+                label: "Call card"
+                widget: object
+                fields:
+                  - { name: title, label: "Title", widget: string }
+                  - { name: text, label: "Text", widget: text }
+              - name: why
+                label: "Why card"
+                widget: object
+                fields:
+                  - { name: title, label: "Title", widget: string }
+                  - { name: items, label: "Items", widget: list, field: { name: item, label: "Item", widget: string } }
+          - name: footer
+            label: "Footer link columns"
+            widget: object
+            fields:
+              - name: services
+                label: "Services column"
+                widget: list
+                fields:
+                  - { name: label, label: "Label", widget: string }
+                  - { name: href, label: "Link", widget: string }
+              - name: company
+                label: "Company column"
+                widget: list
+                fields:
+                  - { name: label, label: "Label", widget: string }
+                  - { name: href, label: "Link", widget: string }

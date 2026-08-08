@@ -1,0 +1,44 @@
+---
+// Site footer — content from site.json.
+import site from '../data/site.json';
+const tel = `tel:${site.phoneRaw}`;
+const year = new Date().getFullYear();
+const cityLine = [site.address.street, `${site.address.city}, ${site.address.state} ${site.address.zip}`].filter(Boolean);
+---
+<footer class="ftr2">
+  <div class="wrap ftgrid">
+    <div>
+      <img src={site.logo} alt={site.logoAlt} style="height:52px;background:#fff;border-radius:8px;padding:6px" />
+      <div class="fttag">{site.taglineTop}<br /><em>{site.taglineAccent}</em></div>
+      <p style="margin:0;line-height:1.7;max-width:300px">{site.credentials}</p>
+      <div class="soc">
+        {site.social.map((s) => (
+          <a class={`socl ${s.cls}`} href={s.href} target="_blank" rel="noopener" title={s.title}>{s.label}</a>
+        ))}
+      </div>
+    </div>
+    <div>
+      <h4 class="fth">Services</h4>
+      {site.footer.services.map((l) => <a class="ftl2" href={l.href}>{l.label}</a>)}
+    </div>
+    <div>
+      <h4 class="fth">Company</h4>
+      {site.footer.company.map((l) => <a class="ftl2" href={l.href}>{l.label}</a>)}
+    </div>
+    <div>
+      <div class="ftcard">
+        <span class="ftchip">{site.topbar.bold}</span>
+        <a class="ftphone" href={tel}>{site.phone}</a>
+        <p style="margin:16px 0 0;line-height:1.6">{cityLine.map((l) => <>{l}<br /></>)}</p>
+        <p style="margin:10px 0 0;font-size:13px;color:#5E7188">{site.countiesShort}</p>
+      </div>
+    </div>
+  </div>
+  <div class="ftwm">{site.footerWordmark}</div>
+  <div class="ftbar">
+    <div class="wrap fx ac jb" style="height:64px;font-size:13px">
+      <span>©{year} {site.legalName}</span>
+      <span>{site.footerBar}</span>
+    </div>
+  </div>
+</footer>

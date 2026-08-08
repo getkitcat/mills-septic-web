@@ -1,0 +1,27 @@
+---
+// 404 — simple page in the site's inner-page style.
+import Base from '../layouts/Base.astro';
+import site from '../data/site.json';
+import '../styles/inner.css';
+
+const tel = `tel:${site.phoneRaw}`;
+---
+<Base
+  title={`Page not found | ${site.name}`}
+  description="That page has moved or doesn't exist. Find septic pumping, inspections, drainfield and repair services from Mills Septic Tank Service in Ocala, FL."
+  path="/404"
+  loader={{ variant: 'text', title: 'Page not', accent: 'found', sub: site.name }}
+>
+  <section class="phero" style="padding:120px 0">
+    <div class="wrap">
+      <div class="crumb"><a href="/">Home</a> / <span style="color:#fff">404</span></div>
+      <h1 class="h1">This page went<br />down the drain.</h1>
+      <p class="lead">The page you're looking for has moved or doesn't exist. Head back home, or just call — a real person answers 24/7.</p>
+      <div class="fx ac gap16" style="margin-top:32px">
+        <a class="btn" href={tel} style="font-size:19px;padding:17px 30px">Call {site.phone}</a>
+        <a class="btn btno" href="/">Back to home</a>
+      </div>
+    </div>
+    <span class="wm">404</span>
+  </section>
+</Base>

@@ -1,0 +1,237 @@
+---
+// Home — Mills Septic Tank Service (Ocala, FL). Built on the KitCat septic
+// design system; content is a spec draft for pitch (owner confirms details).
+import Base from '../layouts/Base.astro';
+import site from '../data/site.json';
+import '../styles/home.css';
+
+const tel = `tel:${site.phoneRaw}`;
+const marquee = [
+  '24/7 Emergency Service',
+  'Septic Tank Pumping',
+  'Septic Cleaning & Inspection',
+  'Drainfield Repair',
+  'Septic Repair & Installation',
+  'Grease Trap Pumping',
+  'Serving Marion County',
+  site.phone,
+];
+---
+<Base
+  title="Septic Tank Pumping, Cleaning & Repair in Ocala, FL | Mills Septic Tank Service"
+  description="Mills Septic Tank Service — septic pumping, cleaning, inspections, drainfield repair and new installs across Ocala and all of Marion County. Free estimates, 24/7 emergency service. Call (352) 732-3956."
+  path="/"
+  loader={{ variant: 'home' }}
+>
+  <section class="hero">
+    <div class="wrap g2" style="padding-top:92px;padding-bottom:92px">
+      <div>
+        <div class="eb">Septic • Cleaning • Drainfield — Ocala, FL</div>
+        <h1 class="h1">One call.<br />Done right.</h1>
+        <p class="lead">Septic tank pumping, cleaning, inspections and repair for Ocala and all of Marion County. Straight answers, honest pricing, and a crew that shows up — including nights and weekends.</p>
+        <div class="fx ac gap16 mt16" style="margin-top:32px">
+          <a class="btn" href={tel} style="font-size:20px;padding:18px 32px">Call {site.phone}</a>
+          <a class="btn btno" href="/services/">Explore Services</a>
+        </div>
+        <div class="fx ac gap10" style="margin-top:36px;flex-wrap:wrap">
+          <span class="chip">Free on-site estimates</span>
+          <span class="chip">Licensed &amp; insured</span>
+          <span class="chip">24/7 emergency</span>
+        </div>
+      </div>
+      <div class="posrel">
+        <div class="ph hframe" style="height:460px"><span class="phl">hero photo — pump truck on a Marion County job</span></div>
+        <div class="hero-chip"><span class="star">★★★★★</span><span>"Showed up fast and didn't upsell me." — Ocala, FL</span></div>
+        <div class="hero-badge"><span class="hbn">24/7</span><span class="hbl">Emergency<br />response</span></div>
+      </div>
+    </div>
+    <span class="wm2">Ocala</span>
+  </section>
+
+  <div class="stats">
+    <div class="wrap g4">
+      <div class="stat"><div class="statn">24/7</div><div class="statl">Emergency response</div></div>
+      <div class="stat"><div class="statn">Free</div><div class="statl">On-site estimates</div></div>
+      <div class="stat"><div class="statn">Ocala</div><div class="statl">Local to Marion County</div></div>
+      <div class="stat"><div class="statn">★★★★★</div><div class="statl">Straight, honest service</div></div>
+    </div>
+  </div>
+
+  <section class="sec" id="services">
+    <div class="wrap">
+      <div class="eb" style="color:var(--accent)">What we do</div>
+      <h2 class="h2">Everything your septic system needs</h2>
+      <p class="sub">From routine pump-outs to failing drainfields and full system replacements — one local company handles it all, so you're not chasing three different contractors.</p>
+      <div class="g4" style="margin-top:44px">
+        <a class="card" href="/services/#pumping">
+          <div class="ph2" style="height:190px;border-radius:0;border:none"><span class="phl2">photo — tank pump-out</span></div>
+          <div class="cbody">
+            <h3 class="cardt">Septic Tank Pumping</h3>
+            <p class="cardp">Slow drains, odors, or sewage surfacing in the yard mean it's time. We pump, clean, and check the whole system in one visit.</p>
+            <span class="more">Read more →</span>
+          </div>
+        </a>
+        <a class="card" href="/services/#inspection">
+          <div class="ph2" style="height:190px;border-radius:0;border:none"><span class="phl2">photo — inspection</span></div>
+          <div class="cbody">
+            <h3 class="cardt">Cleaning &amp; Inspection</h3>
+            <p class="cardp">Filter cleaning, sludge measurement, and real-estate inspections — a clear read on your system's health before it becomes a problem.</p>
+            <span class="more">Read more →</span>
+          </div>
+        </a>
+        <a class="card" href="/services/#drainfield">
+          <div class="ph2" style="height:190px;border-radius:0;border:none"><span class="phl2">photo — drainfield work</span></div>
+          <div class="cbody">
+            <h3 class="cardt">Drainfield Repair</h3>
+            <p class="cardp">Waterlogged, soggy, or backing up? We diagnose the real cause and repair or rebuild the field — permits and excavation included.</p>
+            <span class="more">Read more →</span>
+          </div>
+        </a>
+        <a class="card" href="/services/#install">
+          <div class="ph2" style="height:190px;border-radius:0;border:none"><span class="phl2">photo — new system install</span></div>
+          <div class="cbody">
+            <h3 class="cardt">Repair &amp; Installation</h3>
+            <p class="cardp">From a broken pipe or lift pump to a brand-new tank and drainfield — permitted, inspected, and done to code.</p>
+            <span class="more">Read more →</span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec dark posrel ohide">
+    <span class="wmD">24/7</span>
+    <div class="wrap g2">
+      <div>
+        <div class="eb">Septic trouble doesn't wait</div>
+        <h2 class="h2">Backed up at 2am? We answer.</h2>
+        <p class="sub">A septic emergency at the wrong hour is stressful enough without waiting on a callback. Mills runs 24/7 emergency service across Marion County — real help on the phone, and a truck on the way when you need one.</p>
+        <ul class="ck">
+          <li class="cki"><span class="ckd">✓</span>Nights, weekends, and holidays</li>
+          <li class="cki"><span class="ckd">✓</span>Fast dispatch across Ocala &amp; Marion County</li>
+          <li class="cki"><span class="ckd">✓</span>Upfront pricing before we start</li>
+        </ul>
+        <div class="fx ac gap16" style="margin-top:32px">
+          <a class="btn" href={tel}>Call {site.phone}</a>
+          <a class="btn btno" href="/contact/">Request service</a>
+        </div>
+      </div>
+      <div class="imgstack2">
+        <div class="ph2" style="height:440px;border-radius:12px"><span class="phl2">photo — night emergency call</span></div>
+        <div class="frame2"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="wrap">
+      <div class="g2" style="align-items:start">
+        <div>
+          <div class="eb" style="color:var(--accent)">Why Mills</div>
+          <h2 class="h2">Local, straight, and done in one visit</h2>
+          <p class="sub">You shouldn't need three contractors and two weeks to fix a septic problem. Mills is local to Ocala, gives you honest answers, and handles the whole job start to finish.</p>
+          <div class="fx col gap16" style="margin-top:36px">
+            <div class="why fx gap16" style="flex-direction:row;align-items:flex-start">
+              <span class="wnum">1</span>
+              <div>
+                <h3 class="whyt" style="margin-top:2px">Local to Marion County</h3>
+                <p class="whyp">Based right here in Ocala — not an out-of-town call center. We know the soil, the county permitting, and the neighborhoods.</p>
+              </div>
+            </div>
+            <div class="why fx gap16" style="flex-direction:row;align-items:flex-start">
+              <span class="wnum">2</span>
+              <div>
+                <h3 class="whyt" style="margin-top:2px">Honest diagnosis</h3>
+                <p class="whyp">If a filter cleaning saves you a full pump-out, we'll tell you. We find the real cause instead of selling you the biggest job.</p>
+              </div>
+            </div>
+            <div class="why fx gap16" style="flex-direction:row;align-items:flex-start">
+              <span class="wnum">3</span>
+              <div>
+                <h3 class="whyt" style="margin-top:2px">One call, handled</h3>
+                <p class="whyp">Pumping, repair, drainfield, new installs — all in-house. No referrals, no finger-pointing between trades.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="why" style="padding:36px 34px">
+          <h3 class="whyt" style="margin-top:0;font-size:26px">Every service visit includes:</h3>
+          <ul class="ck">
+            <li class="cki"><span class="ckd">✓</span>Locating and uncovering the tank access</li>
+            <li class="cki"><span class="ckd">✓</span>Full pump-out and tank cleaning</li>
+            <li class="cki"><span class="ckd">✓</span>Checking the inlet and outlet for blockages</li>
+            <li class="cki"><span class="ckd">✓</span>Measuring sludge and solids so you only pump when needed</li>
+            <li class="cki"><span class="ckd">✓</span>Inspecting the filter and baffles</li>
+            <li class="cki"><span class="ckd">✓</span>A straight read on whether the drainfield is draining</li>
+          </ul>
+          <p class="whyp" style="margin-top:22px">You get the full picture of your system's health — and an honest recommendation, not a sales pitch.</p>
+          <a class="btn" href={tel} style="margin-top:24px">Get an estimate</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" style="padding-top:0">
+    <div class="wrap">
+      <div class="tc">
+        <div class="eb" style="color:var(--accent)">What customers say</div>
+        <h2 class="h2">Trusted around Ocala</h2>
+      </div>
+      <div class="g3" style="margin-top:44px">
+        <div class="rev"><span class="star">★★★★★</span><p class="revq">"Called in the morning with the tank backing up and they had it pumped and cleaned the same day. Explained everything, no surprises on the bill."</p><span class="revn">— Homeowner, Ocala</span></div>
+        <div class="rev"><span class="star">★★★★★</span><p class="revq">"Thought I needed a whole new drainfield. They checked it out and it turned out to be a clog. Saved me thousands and were honest about it."</p><span class="revn">— Homeowner, Silver Springs</span></div>
+        <div class="rev"><span class="star">★★★★★</span><p class="revq">"Needed an inspection for a home sale on short notice. Quick, professional, and the report was ready when they said it would be."</p><span class="revn">— Homeowner, Belleview</span></div>
+      </div>
+      <p class="tc" style="margin-top:26px;font-size:13px;color:#8A7F68">Sample reviews shown for layout — we'll pull your real Google reviews in on launch.</p>
+    </div>
+  </section>
+
+  <section class="sec dark">
+    <div class="wrap g2">
+      <div>
+        <div class="eb">Service area</div>
+        <h2 class="h2">Ocala &amp; all of Marion County</h2>
+        <p class="sub">Based in Ocala, we cover the whole county — town, country, and everywhere in between.</p>
+        <div class="fx gap10" style="margin-top:30px;flex-wrap:wrap">
+          <span class="city">Ocala</span><span class="city">Belleview</span><span class="city">Silver Springs</span><span class="city">Dunnellon</span><span class="city">Summerfield</span><span class="city">Ocklawaha</span><span class="city">Anthony</span><span class="city">Reddick</span>
+        </div>
+        <div style="margin-top:30px"><a class="btn" href="/service-areas/">See all service areas</a></div>
+      </div>
+      <div class="ph" style="height:360px"><span class="phl">map — Marion County service area (Google Map embed)</span></div>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="wrap" style="max-width:880px">
+      <div class="tc">
+        <div class="eb" style="color:var(--accent)">FAQ</div>
+        <h2 class="h2">Common questions</h2>
+      </div>
+      <div class="fx col gap12" style="margin-top:40px">
+        <details class="faq"><summary>How often should my septic tank be pumped?</summary><p class="faqa">Every 3–5 years for most households, and more often for larger families or heavy use. We measure sludge and solids on every visit and tell you honestly whether it actually needs pumping yet.</p></details>
+        <details class="faq"><summary>What are the signs I need service?</summary><p class="faqa">Slow drains throughout the house, gurgling toilets, sewage odors, or wet, spongy ground over the drainfield. If you're seeing any of these, call us before it turns into a backup.</p></details>
+        <details class="faq"><summary>Do you handle drainfield problems and new installs?</summary><p class="faqa">Yes. We diagnose and repair failing drainfields, and we install complete new systems — tank and field — with the county permits and inspections handled for you.</p></details>
+        <details class="faq"><summary>Can you do a septic inspection for a home sale?</summary><p class="faqa">We do — inspections and reports for buyers, sellers, and real-estate closings across Marion County, usually on a quick turnaround.</p></details>
+        <details class="faq"><summary>Do you offer emergency service?</summary><p class="faqa">Yes — 24 hours a day, 7 days a week, including weekends and holidays. Call <a href={tel} style="color:var(--accent);font-weight:700">{site.phone}</a> any time.</p></details>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta" style="padding:96px 0">
+    <div class="wrap">
+      <div class="eb">24/7 emergency • Free estimates</div>
+      <h2 class="ctap">Septic trouble? We answer.</h2>
+      <div style="margin-top:36px">
+        <a class="btn" href={tel} style="font-size:24px;padding:20px 40px">Call {site.phone}</a>
+      </div>
+    </div>
+  </section>
+
+  <div class="mq">
+    <div class="mqt">
+      {[...marquee, ...marquee].map((item) => (
+        <span class="mqi"><span class="mqs">✦</span>{item}</span>
+      ))}
+    </div>
+  </div>
+</Base>

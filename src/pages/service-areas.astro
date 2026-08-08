@@ -1,0 +1,83 @@
+---
+// Service Areas — Mills Septic Tank Service (Ocala, FL). Spec draft.
+import Base from '../layouts/Base.astro';
+import site from '../data/site.json';
+import '../styles/inner.css';
+import '../styles/home.css';
+
+const tel = `tel:${site.phoneRaw}`;
+const areas = [
+  { name: 'Ocala', note: 'City-wide service, every neighborhood — our home base.' },
+  { name: 'Belleview', note: 'Full septic service south of Ocala.' },
+  { name: 'Silver Springs', note: 'Pumping, repair and inspections east of the city.' },
+  { name: 'Silver Springs Shores', note: 'Residential systems throughout the Shores.' },
+  { name: 'Dunnellon', note: 'Serving the Rainbow River / SW Marion area.' },
+  { name: 'Summerfield', note: 'Homes and communities across the 42 corridor.' },
+  { name: 'Ocklawaha', note: 'Lakeside properties and rural systems.' },
+  { name: 'Marion Oaks', note: 'New-build and established systems in the SW.' },
+  { name: 'Anthony & Sparr', note: 'North Marion residential and country properties.' },
+  { name: 'Reddick & McIntosh', note: 'Farm and horse-country systems up north.' },
+  { name: 'Fort McCoy & Citra', note: 'Rural NE Marion, including large-acre lots.' },
+  { name: 'Weirsdale & Candler', note: 'Southeast Marion near the lakes.' },
+];
+const zips = ['34470','34471','34472','34473','34474','34475','34476','34479','34480','34481','34482','34488','34491'];
+---
+<Base
+  title="Service Areas | Septic Service Across Ocala & Marion County, FL | Mills Septic"
+  description="Mills Septic Tank Service covers Ocala and all of Marion County, FL — Belleview, Silver Springs, Dunnellon, Summerfield, Ocklawaha, Marion Oaks, Anthony, Reddick and more. Call (352) 732-3956."
+  path="/service-areas/"
+  loader={{ variant: 'text', title: 'Service', accent: 'Areas', sub: site.countiesShort }}
+>
+  <section class="phero">
+    <div class="wrap">
+      <div class="crumb"><a href="/">Home</a> / <span style="color:#fff">Service Areas</span></div>
+      <h1 class="h1">Serving all of<br />Marion County.</h1>
+      <p class="lead">Based in Ocala, Mills covers the whole county — city neighborhoods, lakeside homes, and rural properties on well and septic. If you're in Marion County, we can get to you.</p>
+      <div class="fx ac gap16" style="margin-top:28px;flex-wrap:wrap">
+        <a class="btn" href={tel} style="font-size:19px;padding:17px 30px">Call {site.phone}</a>
+        <a class="btn btno" href="/contact/">Request service</a>
+      </div>
+    </div>
+    <span class="wm">Marion</span>
+  </section>
+
+  <section class="sec">
+    <div class="wrap">
+      <div class="eb" style="color:var(--accent)">Where we work</div>
+      <h2 class="h2">Cities &amp; communities we serve</h2>
+      <p class="sub">A local crew that knows the county — the soil, the older systems, and how Marion County permitting works. Don't see your town? Call us; if you're in the county, we almost certainly cover it.</p>
+      <div class="g3" style="margin-top:44px">
+        {areas.map((a) => (
+          <div class="vcard">
+            <h3 class="vt" style="display:flex;align-items:center;gap:10px"><span style="color:var(--accent)">◆</span>{a.name}</h3>
+            <p class="vp">{a.note}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="sec dark">
+    <div class="wrap g2">
+      <div>
+        <div class="eb">Coverage map</div>
+        <h2 class="h2">One county, fully covered</h2>
+        <p class="sub">From downtown Ocala out to Fort McCoy, Dunnellon, and the southern lakes — we run service and emergency calls across all of Marion County.</p>
+        <div class="fx gap10" style="margin-top:28px;flex-wrap:wrap">
+          {zips.map((z) => <span class="city">{z}</span>)}
+        </div>
+      </div>
+      <div class="ph" style="height:380px"><span class="phl">map — Marion County coverage (Google Map embed)</span></div>
+    </div>
+  </section>
+
+  <section class="cta" style="padding:88px 0">
+    <div class="wrap">
+      <div class="eb">24/7 emergency • Free estimates</div>
+      <h2 class="ctap">In Marion County? We've got you.</h2>
+      <div style="margin-top:32px">
+        <a class="btn" href={tel} style="font-size:22px;padding:19px 38px">Call {site.phone}</a>
+      </div>
+    </div>
+  </section>
+</Base>

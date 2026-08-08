@@ -1,0 +1,25 @@
+---
+// Page-entry loader, exactly as designed.
+// Home shows the logo + delayed message; every other page shows the
+// two-tone page title. fx.js runs the timing and removes it.
+import site from '../data/site.json';
+
+interface Props {
+  variant?: 'home' | 'text';
+  title?: string;   // e.g. "Septic Pumping" — the part BEFORE the red word
+  accent?: string;  // the red word, e.g. "Pumping"
+  sub?: string;
+}
+const { variant = 'text', title = '', accent = '', sub = site.name } = Astro.props;
+---
+{variant === 'home' ? (
+  <div class="loader" data-variant="home">
+    <img class="llogo" src={site.logo} alt={site.logoAlt} style="height:120px;width:auto" />
+    <div class="ldmsg">{site.countiesShort}</div>
+  </div>
+) : (
+  <div class="loader">
+    <h2 class="lwm">{title} <span class="lwr">{accent}</span></h2>
+    <div class="lsub">{sub}</div>
+  </div>
+)}

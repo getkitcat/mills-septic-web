@@ -1,0 +1,123 @@
+---
+// Services We Offer — Mills Septic Tank Service (Ocala, FL). Spec draft.
+import Base from '../layouts/Base.astro';
+import site from '../data/site.json';
+import '../styles/inner.css';
+import '../styles/home.css';
+
+const tel = `tel:${site.phoneRaw}`;
+const services = [
+  {
+    id: 'pumping',
+    title: 'Septic Tank Pumping',
+    desc: 'Routine and emergency pump-outs for homes and businesses. We remove the full contents, clean the tank, and check that it\'s emptying and refilling the way it should.',
+    points: ['Residential & commercial tanks', 'Sludge & solids measured every visit', 'Only pump when it\'s actually needed'],
+  },
+  {
+    id: 'cleaning',
+    title: 'Septic Cleaning & Maintenance',
+    desc: 'Filter cleaning, baffle checks, and regular maintenance that keeps small issues from turning into backups and expensive drainfield damage.',
+    points: ['Effluent filter cleaning', 'Riser & lid service', 'Maintenance schedule that fits your household'],
+  },
+  {
+    id: 'inspection',
+    title: 'Septic Inspections',
+    desc: 'Thorough inspections for homeowners, buyers, and sellers — including real-estate and point-of-sale inspections with a clear written report.',
+    points: ['Real-estate & closing inspections', 'Full system health check', 'Clear report, fast turnaround'],
+  },
+  {
+    id: 'drainfield',
+    title: 'Drainfield Repair & Replacement',
+    desc: 'Soggy ground, slow drains, or standing water over the field usually mean the drainfield is struggling. We diagnose the cause and repair or rebuild it.',
+    points: ['Failing & waterlogged fields', 'Distribution box repair', 'Permits & excavation handled'],
+  },
+  {
+    id: 'repair',
+    title: 'Septic Repair',
+    desc: 'Broken pipes, cracked lids, failed baffles, lift-pump problems — we fix the parts of your system that fail, so one bad component doesn\'t take down the whole system.',
+    points: ['Pipe & baffle repair', 'Lift station & pump repair', 'Backup & clog clearing'],
+  },
+  {
+    id: 'install',
+    title: 'New System Installation',
+    desc: 'Complete new septic systems — tank and drainfield — sized, permitted, and installed to Marion County code, whether it\'s a new build or a full replacement.',
+    points: ['New tanks & complete systems', 'Sized for your property', 'Permitted & inspected'],
+  },
+  {
+    id: 'grease',
+    title: 'Grease Trap Pumping',
+    desc: 'Scheduled grease trap pumping and cleaning for restaurants and commercial kitchens across the Ocala area — kept on a cadence that keeps you compliant.',
+    points: ['Restaurants & commercial kitchens', 'Scheduled service', 'Compliant disposal'],
+  },
+  {
+    id: 'emergency',
+    title: '24/7 Emergency Service',
+    desc: 'Septic doesn\'t back up on a schedule. When it happens after hours, on a weekend, or on a holiday, we\'re reachable and we respond.',
+    points: ['Nights, weekends & holidays', 'Fast dispatch county-wide', 'Real help on the phone'],
+  },
+];
+---
+<Base
+  title="Septic Services in Ocala, FL | Pumping, Inspections, Drainfield & Repair | Mills Septic"
+  description="The full range of septic services for Ocala & Marion County: tank pumping, cleaning, inspections, drainfield repair, septic repair, new installations, grease traps and 24/7 emergency service. Call (352) 732-3956."
+  path="/services/"
+  loader={{ variant: 'text', title: 'Services', accent: 'We Offer', sub: site.countiesShort }}
+>
+  <section class="phero">
+    <div class="wrap">
+      <div class="crumb"><a href="/">Home</a> / <span style="color:#fff">Services</span></div>
+      <h1 class="h1">Services we offer</h1>
+      <p class="lead">Everything a septic system needs — from a routine pump-out to a full replacement — handled by one local Ocala company. Whatever's going on, one call gets it sorted.</p>
+      <div class="fx ac gap16" style="margin-top:28px;flex-wrap:wrap">
+        <a class="btn" href={tel} style="font-size:19px;padding:17px 30px">Call {site.phone}</a>
+        <a class="btn btno" href="/contact/">Request service</a>
+      </div>
+    </div>
+    <span class="wm">Septic</span>
+  </section>
+
+  <section class="sec">
+    <div class="wrap">
+      <div class="eb" style="color:var(--accent)">What we do</div>
+      <h2 class="h2">One company for the whole system</h2>
+      <p class="sub">Most septic problems touch more than one part of the system. Because we handle pumping, repair, drainfield work and installs in-house, we can find the real cause and fix it — without handing you off.</p>
+      <div class="g3" style="margin-top:44px">
+        {services.map((s) => (
+          <article id={s.id} class="vcard" style="display:flex;flex-direction:column;gap:12px">
+            <h3 class="vt" style="margin:0">{s.title}</h3>
+            <p class="vp" style="margin:0">{s.desc}</p>
+            <ul class="ck" style="margin:6px 0 0">
+              {s.points.map((p) => <li class="cki" style="font-size:15px"><span class="ckd">✓</span>{p}</li>)}
+            </ul>
+            <a class="more" href={tel} style="margin-top:auto">Ask about {s.title.toLowerCase()} →</a>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="sec dark posrel ohide" style="padding-top:0">
+    <div class="wrap g2" style="padding-top:72px">
+      <div>
+        <div class="eb">Not sure what you need?</div>
+        <h2 class="h2">Tell us what's happening — we'll figure it out</h2>
+        <p class="sub">Slow drains, an odor, a wet spot in the yard, or a letter from the county about your system? Describe it and we'll tell you the likely cause and what it takes to fix — before anyone digs.</p>
+        <div class="fx ac gap16" style="margin-top:30px;flex-wrap:wrap">
+          <a class="btn" href={tel}>Call {site.phone}</a>
+          <a class="btn btno" href="/contact/">Send us a message</a>
+        </div>
+      </div>
+      <div class="ph2" style="height:320px;border-radius:12px"><span class="phl2">photo — technician diagnosing a system</span></div>
+    </div>
+  </section>
+
+  <section class="cta" style="padding:88px 0">
+    <div class="wrap">
+      <div class="eb">24/7 emergency • Free estimates</div>
+      <h2 class="ctap">Ready when you are.</h2>
+      <div style="margin-top:32px">
+        <a class="btn" href={tel} style="font-size:22px;padding:19px 38px">Call {site.phone}</a>
+      </div>
+    </div>
+  </section>
+</Base>

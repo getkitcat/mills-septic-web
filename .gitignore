@@ -1,0 +1,23 @@
+# build output
+dist/
+.astro/
+
+# dependencies
+node_modules/
+
+# logs
+npm-debug.log*
+
+# environment
+.env
+.env.production
+
+# OS
+Thumbs.db
+.DS_Store
+
+# original Claude Design export (kept locally for reference, not shipped)
+_design-export/
+
+# wrangler
+.wrangler/

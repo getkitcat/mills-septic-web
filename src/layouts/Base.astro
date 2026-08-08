@@ -1,0 +1,35 @@
+---
+// The <html> shell every page uses: Head, loader, fixed top bar + header,
+// call FAB, page content, footer, global fx script.
+import '../styles/global.css';
+import Head from '../components/Head.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import Loader from '../components/Loader.astro';
+import site from '../data/site.json';
+
+interface Props {
+  title: string;
+  description: string;
+  path: string;
+  ogImage?: string;
+  jsonld?: object[];
+  loader?: { variant?: 'home' | 'text'; title?: string; accent?: string; sub?: string };
+}
+const { title, description, path, ogImage, jsonld, loader } = Astro.props;
+const tel = `tel:${site.phoneRaw}`;
+---
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    <Head {title} {description} {path} {ogImage} {jsonld} />
+  </head>
+  <body>
+    <Loader {...loader} />
+    <Header currentPath={path} />
+    <a class="fab" href={tel}><span class="fabi">✆</span>Call Now</a>
+    <slot />
+    <Footer />
+    <script src="../scripts/fx.js"></script>
+  </body>
+</html>

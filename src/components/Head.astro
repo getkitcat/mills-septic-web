@@ -1,0 +1,67 @@
+---
+// Centralized <head>: meta, canonical, OG/Twitter, fonts, JSON-LD.
+// Never hand-write meta tags in a page — pass props here instead.
+import site from '../data/site.json';
+
+interface Props {
+  title: string;
+  description: string;
+  path: string; // e.g. "/septic-pumping/"
+  ogImage?: string;
+  jsonld?: object[];
+}
+const { title, description, path, ogImage = '/assets/logo.svg', jsonld = [] } = Astro.props;
+
+const siteUrl = Astro.site?.toString().replace(/\/$/, '') ?? '';
+const canonical = siteUrl + path;
+
+const orgSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Plumber',
+  '@id': siteUrl + '/#business',
+  name: site.name,
+  legalName: site.legalName,
+  url: siteUrl + '/',
+  logo: siteUrl + site.logo,
+  image: siteUrl + site.logo,
+  telephone: '+1' + site.phoneRaw,
+  ...(site.since ? { foundingDate: site.since } : {}),
+  address: {
+    '@type': 'PostalAddress',
+    ...(site.address.street ? { streetAddress: site.address.street } : {}),
+    addressLocality: site.address.city,
+    addressRegion: site.address.state,
+    postalCode: site.address.zip,
+    addressCountry: 'US',
+  },
+  areaServed: site.areaServed,
+  openingHoursSpecification: {
+    '@type': 'OpeningHoursSpecification',
+    dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
+    opens: '00:00',
+    closes: '23:59',
+  },
+  sameAs: site.social.map((s) => s.href),
+};
+const allJsonld = [orgSchema, ...jsonld];
+---
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>{title}</title>
+<meta name="description" content={description} />
+<link rel="canonical" href={canonical} />
+<link rel="icon" href="/assets/logo.svg" type="image/svg+xml" />
+<link rel="sitemap" href="/sitemap-index.xml" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content={site.name} />
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:url" content={canonical} />
+<meta property="og:image" content={siteUrl + ogImage} />
+<meta name="twitter:card" content="summary_large_image" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Barlow:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet" />
+{allJsonld.map((schema) => (
+  <script type="application/ld+json" set:html={JSON.stringify(schema)} />
+))}
+<script is:inline>document.documentElement.classList.remove('no-js');</script>

@@ -1,0 +1,103 @@
+---
+// Top bar + sticky header with mega menus, driven by site.json so the
+// template can be re-pointed at a new client without touching markup.
+// Includes the mobile hamburger nav (KitCat addition — the export was
+// desktop-only; desktop rendering is unchanged).
+import site from '../data/site.json';
+import navData from '../data/nav.json';
+
+interface Props { currentPath?: string }
+const { currentPath = '/' } = Astro.props;
+const tel = `tel:${site.phoneRaw}`;
+const isActive = (href: string) => currentPath === href;
+const nav = navData.nav;
+---
+<div class="fixtop">
+  <div class="tb">
+    <div class="wrap fx ac jb tbx">
+      <div class="fx ac gap16">
+        <span><b class="cn" style="color:#fff;letter-spacing:.08em">{site.topbar.bold}</b></span>
+        {site.topbar.items.map((item) => (
+          <>
+            <span class="tbs tbhide">•</span>
+            <span class="tbhide">{item}</span>
+          </>
+        ))}
+      </div>
+      <a class="tbp" href={tel}>{site.phone}</a>
+    </div>
+  </div>
+  <header class="hdr">
+    <div class="wrap fx ac jb hdx">
+      <a href="/" class="fx ac"><img class="logoimg" src={site.logo} alt={site.logoAlt} style="height:58px;width:auto" /></a>
+      <nav class="fx ac gap24 nvw">
+        {nav.map((item) => item.mega ? (
+          <div class="nvi">
+            <a class="nvl" href={item.href}>{item.label} <span class="cv">▾</span></a>
+            <div class="mega">
+              <div class="mpanel">
+                {item.mega.cards && (
+                  <div class="mgrid" style={item.mega.cardsCols ? `grid-template-columns:${item.mega.cardsCols}` : undefined}>
+                    {item.mega.cards.map((c) => (
+                      <a class="mcard" href={c.href}>
+                        <span class="mct">{c.title}</span>
+                        <span class="mcd">{c.desc}</span>
+                      </a>
+                    ))}
+                  </div>
+                )}
+                {item.mega.list && (
+                  <div class="mlist">
+                    {item.mega.list.map((l) => (
+                      <a class="mli" href={l.href}>
+                        <span class="mlit">{l.title}</span>
+                        <span class="mlid">{l.desc}</span>
+                      </a>
+                    ))}
+                  </div>
+                )}
+                {item.mega.side && (
+                  <div class="mside">
+                    <div class="msh">{item.mega.side.title}</div>
+                    {item.mega.side.links.map((l) => (
+                      <a class="msl" href={l.href}>{l.label}</a>
+                    ))}
+                  </div>
+                )}
+              </div>
+            </div>
+          </div>
+        ) : (
+          <a class="nvl" href={item.href} style={isActive(item.href) ? 'color:var(--accent)' : undefined}>{item.label}</a>
+        ))}
+      </nav>
+      <a class="btn" href={tel}>Call {site.phone}</a>
+      <button class="mtg" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
+    </div>
+  </header>
+  <div class="mnav">
+    {nav.map((item) => item.mega ? (
+      <details class="mnavg">
+        <summary>{item.label}</summary>
+        {(item.mega.cards ?? []).map((c) => <a class="mnavl" href={c.href}>{c.title}</a>)}
+        {(item.mega.list ?? []).map((l) => <a class="mnavl" href={l.href}>{l.title}</a>)}
+        {(item.mega.side?.links ?? []).map((l) => <a class="mnavl" href={l.href}>{l.label}</a>)}
+      </details>
+    ) : (
+      <a class="mnava" href={item.href}>{item.label}</a>
+    ))}
+    <div style="padding:22px 4px"><a class="btn w100" href={tel} style="justify-content:center">Call {site.phone}</a></div>
+  </div>
+</div>
+<div class="topsp"></div>
+
+<script>
+  const mtg = document.querySelector('.mtg');
+  const mnav = document.querySelector('.mnav');
+  mtg?.addEventListener('click', () => {
+    const open = mnav?.classList.toggle('open');
+    mtg.classList.toggle('open', !!open);
+    mtg.setAttribute('aria-expanded', String(!!open));
+    document.body.classList.toggle('mnav-lock', !!open);
+  });
+</script>

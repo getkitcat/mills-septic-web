@@ -1,0 +1,110 @@
+---
+// About — Mills Septic Tank Service (Ocala, FL). Spec draft for pitch.
+import Base from '../layouts/Base.astro';
+import site from '../data/site.json';
+import '../styles/inner.css';
+
+const tel = `tel:${site.phoneRaw}`;
+const quotes = [
+  { q: '"Same-day service and no surprises on the bill."', n: '— Homeowner, Ocala' },
+  { q: '"Honest — talked me out of a job I didn\'t need."', n: '— Homeowner, Silver Springs' },
+  { q: '"Fast inspection for our closing."', n: '— Homeowner, Belleview' },
+  { q: '"Showed up when they said they would."', n: '— Homeowner, Summerfield' },
+  { q: '"Fair price and cleaned up after."', n: '— Homeowner, Dunnellon' },
+];
+---
+<Base
+  title="About Mills Septic Tank Service | Local Septic Company in Ocala, FL"
+  description="Mills Septic Tank Service is a local septic company serving Ocala and all of Marion County — pumping, cleaning, inspections, drainfield work and repair, with honest diagnosis and 24/7 emergency service."
+  path="/about/"
+  loader={{ variant: 'text', title: 'About', accent: 'Mills', sub: site.countiesShort }}
+>
+  <section class="phero">
+    <div class="wrap">
+      <div class="crumb"><a href="/">Home</a> / <span style="color:#fff">About</span></div>
+      <h1 class="h1">Ocala's septic,<br />done straight.</h1>
+      <p class="lead">Mills Septic Tank Service is a local company built on doing septic work the honest way — finding the real problem, fixing it right, and treating your yard and your wallet with respect.</p>
+      <div class="fx ac gap10" style="margin-top:32px;flex-wrap:wrap">
+        <span class="chip">Local to Marion County</span>
+        <span class="chip">Licensed &amp; insured</span>
+        <span class="chip">24/7 emergency</span>
+      </div>
+    </div>
+    <span class="wm">Ocala</span>
+  </section>
+
+  <div class="stats">
+    <div class="wrap statg">
+      <div class="stat"><div class="statn">24/7</div><div class="statl">Emergency response</div></div>
+      <div class="stat"><div class="statn">Free</div><div class="statl">On-site estimates</div></div>
+      <div class="stat"><div class="statn">Ocala</div><div class="statl">Local to Marion County</div></div>
+      <div class="stat"><div class="statn">All</div><div class="statl">Septic work in-house</div></div>
+    </div>
+  </div>
+
+  <section class="sec">
+    <div class="wrap g2">
+      <div>
+        <div class="eb">Our story</div>
+        <h2 class="h2">A local septic company that answers the phone</h2>
+        <p class="bodyp">Mills Septic Tank Service works throughout Ocala and Marion County, handling everything a septic system needs: pumping, cleaning, inspections, drainfield repair, system replacement, and emergency service. One local crew, one point of contact — no getting bounced between companies.</p>
+        <p class="bodyp">Septic problems are stressful and easy to get overcharged on. That's why our approach is simple: look at the whole system, tell you honestly what's going on, and only recommend the work you actually need. If a small fix will do it, that's what we'll tell you.</p>
+        <div class="fx gap10 mt16" style="flex-wrap:wrap;margin-top:28px">
+          <span class="badge">Pumping &amp; cleaning</span>
+          <span class="badge">Inspections</span>
+          <span class="badge">Drainfield &amp; repair</span>
+          <span class="badge">24/7 emergency</span>
+        </div>
+        <p class="pq">"Find the real problem, fix it right, and leave the yard the way we found it."</p>
+      </div>
+      <div class="imgstack">
+        <div class="ph2" style="height:440px;border-radius:12px"><span class="phl2">photo — Mills pump truck on site</span></div>
+        <div class="ph2 tilt"><span class="phl2">photo — the crew</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="tlsec">
+    <div class="wrap">
+      <div class="eb">How we work</div>
+      <h2 class="h2" style="margin-top:12px">The Mills way, step by step</h2>
+      <div class="tlgrid">
+        <div class="tli"><span class="tly">01</span><h3 class="tlt">You call, we answer</h3><p class="tld">A real person, day or night. We get the details and set a time that works — same-day for emergencies.</p></div>
+        <div class="tli"><span class="tly">02</span><h3 class="tlt">We look at everything</h3><p class="tld">Tank, filter, inlet and outlet, and the drainfield — so we find the actual cause, not just the symptom.</p></div>
+        <div class="tli"><span class="tly">03</span><h3 class="tlt">Straight recommendation</h3><p class="tld">Upfront pricing and an honest call on what's needed now versus what can wait.</p></div>
+        <div class="tli"><span class="tly">04</span><h3 class="tlt">Done and cleaned up</h3><p class="tld">The job finished right, the site left tidy, and a clear idea of when you'll need us next.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" style="padding-top:0">
+    <div class="wrap">
+      <div class="eb">What you can count on</div>
+      <h2 class="h2">Why homeowners keep our number</h2>
+      <div class="g3" style="margin-top:40px">
+        <div class="vcard"><h3 class="vt">Local &amp; reachable</h3><p class="vp">Based in Ocala and serving all of Marion County. When you call, you reach a local team that knows the area — not an out-of-town dispatcher.</p></div>
+        <div class="vcard"><h3 class="vt">Honest diagnosis</h3><p class="vp">We measure sludge and check the whole system before recommending anything. If you don't need a pump-out yet, we'll say so.</p></div>
+        <div class="vcard"><h3 class="vt">Everything in-house</h3><p class="vp">Pumping, repair, drainfield, and installs handled by one company — so nothing falls through the cracks between contractors.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="mq">
+    <div class="mqt">
+      {[...quotes, ...quotes].map((item) => (
+        <span class="mqi"><span class="mqs">★★★★★</span>{item.q} {item.n}</span>
+      ))}
+    </div>
+  </div>
+
+  <section class="cta" style="padding:88px 0">
+    <div class="wrap">
+      <div class="eb">24/7 emergency • Free estimates</div>
+      <h2 class="ctap">Have a septic question?</h2>
+      <div class="fx ac gap16" style="margin-top:32px;justify-content:center;flex-wrap:wrap">
+        <a class="btn" href={tel} style="font-size:22px;padding:19px 38px">Call {site.phone}</a>
+        <a class="btn btno" href="/contact/">Request service</a>
+      </div>
+    </div>
+  </section>
+</Base>

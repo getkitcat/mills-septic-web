@@ -1,0 +1,48 @@
+# Cloudflare redirects — preserve SEO equity from the legacy site's URLs.
+# TEMPLATE: these are the ORIGINAL client's legacy .html URLs (Lakeland FL septic).
+# Replace this whole map with the new client's old-URL → new-URL redirects on clone.
+# Format: /from  /to  status
+
+/index.html                                    /                          301
+
+# Septic
+/Septic-Pumping-Lakeland-FL.html               /septic-pumping/           301
+/Septic-Cleaning-Lakeland-FL.html              /septic-pumping/           301
+/Septic-Services-Lakeland-FL.html              /septic-pumping/           301
+/Septic-Installation-Lakeland-FL.html          /septic-installation/      301
+/Septic-Tank-Installation-Lakeland-FL.html     /septic-installation/      301
+/Septic-Inspection-Lakeland-FL.html            /septic-inspection/        301
+/Septic-Repair-Lakeland-FL.html                /septic-repair/            301
+/Commerical-Septic-Pumping-Lakeland-FL.html    /commercial-septic/        301
+/Commercial-Septic-Repair-Lakeland-FL.html     /commercial-septic/        301
+/Septic-Tank-Bacteria-Lakeland-FL.html         /septic-maintenance/       301
+/Septic-Tank-Filters-Lakeland-FL.html          /septic-maintenance/       301
+/Septic-Tank-Risers-Lakeland-FL.html           /septic-maintenance/       301
+/Septic-Grease-Traps-Lakeland-FL.html          /grease-traps/             301
+/Hydro-Jetting-Lakeland-FL.html                /hydro-jetting/            301
+/Sewer-Lift-Station-Lakeland-FL.html           /sewer-lift-stations/      301
+
+# Plumbing
+/Drain-Cleaning-Lakeland-FL.html               /drain-cleaning/           301
+/Pipe-Repair-Lakeland-FL.html                  /pipe-repair/              301
+/Sewer-Repair-Lakeland-FL.html                 /sewer-repair/             301
+
+# Drain field
+/Drain-Field-Repair-Lakeland-FL.html           /drain-field-repair/       301
+/Drain-Field-Installation-Lakeland-FL.html     /drain-field-installation/ 301
+/Drain-Field-Permit-Lakeland-FL.html           /drain-field-permits/      301
+/Septic-Distribution-Box-Repair-Lakeland-FL.html /distribution-box-repair/ 301
+/Sewer-Pop-Up-Valves-Lakeland-FL.html          /drain-field-repair/       301
+/Sump-Pump-Repair-Lakeland-FL.html             /sump-pump-repair/         301
+
+# Terralift
+/Terralift-Services-Lakeland-FL.html           /terralift/                301
+/Terralift-System-Lakeland-FL.html             /terralift-benefits/       301
+/Drainfield-Replacement-Lakeland-FL.html       /terralift-vs-replacement/ 301
+
+# Company
+/about.html                                    /about/                    301
+/financing.html                                /about/                    301
+
+# Note: apex -> www canonicalization is handled at the Cloudflare/DNS level
+# with a redirect rule, not here.

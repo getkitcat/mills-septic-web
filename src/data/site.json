@@ -1,0 +1,47 @@
+{
+  "name": "Mills Septic Tank Service",
+  "legalName": "Mills Septic Tank Service",
+  "taglineTop": "One call.",
+  "taglineAccent": "Done right.",
+  "phone": "(352) 732-3956",
+  "phoneRaw": "3527323956",
+  "since": "",
+  "address": {
+    "street": "",
+    "city": "Ocala",
+    "state": "FL",
+    "zip": "34470"
+  },
+  "countiesShort": "Serving Ocala & all of Marion County",
+  "footerWordmark": "Mills",
+  "areaServed": ["Marion County FL", "Ocala FL", "Belleview FL", "Dunnellon FL", "Silver Springs FL", "Summerfield FL"],
+  "topbar": {
+    "bold": "24/7 Emergency Septic Service",
+    "items": [
+      "Free estimates",
+      "Serving Ocala & all of Marion County"
+    ]
+  },
+  "credentials": "Septic pumping, cleaning, inspections, drainfield work and repair for Ocala and all of Marion County. Licensed, insured, and available 24/7 for emergencies.",
+  "footerBar": "Ocala, FL · Serving all of Marion County",
+  "logo": "/assets/logo.svg",
+  "logoAlt": "Mills Septic Tank Service",
+  "social": [],
+  "footer": {
+    "services": [
+      { "label": "Septic Tank Pumping", "href": "/services/#pumping" },
+      { "label": "Septic Cleaning", "href": "/services/#cleaning" },
+      { "label": "Septic Inspections", "href": "/services/#inspection" },
+      { "label": "Drainfield Repair", "href": "/services/#drainfield" },
+      { "label": "Septic Repair", "href": "/services/#repair" },
+      { "label": "New System Installation", "href": "/services/#install" }
+    ],
+    "company": [
+      { "label": "Home", "href": "/" },
+      { "label": "Services We Offer", "href": "/services/" },
+      { "label": "Service Areas", "href": "/service-areas/" },
+      { "label": "About", "href": "/about/" },
+      { "label": "Contact", "href": "/contact/" }
+    ]
+  }
+}
